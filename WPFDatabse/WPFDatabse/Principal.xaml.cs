@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFDatabse.Clases;
+using SQLite;
 
 namespace WPFDatabse
 {
@@ -19,9 +21,37 @@ namespace WPFDatabse
     /// </summary>
     public partial class Principal : Window
     {
+        List<Contactos> contactos;
         public Principal()
         {
             InitializeComponent();
+            contactos = new List<Contactos>();
+            LeerBaseDatos();
+        }
+        void LeerBaseDatos()
+        {
+            using (SQLite.SQLiteConnection conn = 
+                new SQLite.SQLiteConnection(App.databasePath))
+            {
+                conn.CreateTable<Contactos>();
+                contactos = (conn.Table<Contactos>().ToList()).
+                    OrderBy(c => c.Nombre).ToList();
+            }
+            if (contactos!=null)
+            {
+                lvContactos.ItemsSource = contactos;
+            }
+        }
+
+        private void btnAgregar_Click(object sender, RoutedEventArgs e)
+        {
+            WPFDatabse.MainWindow form = new WPFDatabse.MainWindow();
+            form.ShowDialog();
+        }
+
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

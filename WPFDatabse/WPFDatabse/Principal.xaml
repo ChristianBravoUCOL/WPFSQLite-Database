@@ -7,6 +7,19 @@
         mc:Ignorable="d"
         Title="Principal" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="571*"/>
+            <ColumnDefinition Width="221*"/>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="lvContactos" HorizontalAlignment="Left" Height="298" Margin="26,26,0,0" VerticalAlignment="Top" Width="742" Grid.ColumnSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="26,349,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="125,349,0,0" VerticalAlignment="Top" Width="75" Click="btnEliminar_Click"/>
+
     </Grid>
 </Window>
