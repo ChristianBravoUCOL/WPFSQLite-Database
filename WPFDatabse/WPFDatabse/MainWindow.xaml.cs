@@ -40,6 +40,7 @@ namespace WPFDatabse
                 conexion.CreateTable<Contactos>();
                 conexion.Insert(contacto);
             }
+            Close();
         }
     }
 }
