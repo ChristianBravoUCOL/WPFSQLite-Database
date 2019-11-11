@@ -51,6 +51,8 @@ namespace WPFDatabse
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
+            WPFDatabse.EliminarDatos form = new WPFDatabse.EliminarDatos();
+            form.ShowDialog();
 
         }
     }
